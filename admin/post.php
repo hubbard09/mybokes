@@ -24,7 +24,7 @@ $row = mysql_fetch_array($query);
 $sql = "select * from message where messageid = $id order by id desc limit 10";
 $query = mysql_query($sql);
 
-$sql = "select * from userpost order by Recommend desc limit 2";
+$sql = "select * from userpost order by click desc limit 2";
 $recommend = mysql_query($sql);
 
 include "Template/blog.html";

@@ -1,6 +1,7 @@
 <?php
 include 'conn.php';
 session_start();
+$_SESSION['userurl'] = $_SERVER['REQUEST_URI'];
 $id = $_GET['p'];
 $sql = "select * from userpost where id = $id ";
 $query = mysql_query($sql);
@@ -13,7 +14,7 @@ if (isset($_POST['submit'])) {
     $sql = "INSERT INTO message (id, name, content, messageid, lastdate) VALUES (NULL, '{$_SESSION['username']}', '{$_POST['content']}', '$id', now())";
     mysql_query($sql);
 }
-$sql = "select * from userpost order by Recommend desc limit 2";
+$sql = "select * from userpost order by click desc limit 2";
 $recommend = mysql_query($sql);
 include("pageft_b.php");
 include "Template/blog.html";

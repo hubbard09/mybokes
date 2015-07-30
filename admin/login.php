@@ -1,6 +1,7 @@
 <?php
 include 'conn.php';
 session_start();
+
 if(isset ($_POST['submit']) ) {
     if($_POST['submit'] == '登录') {
         $name = $_POST['log'];
@@ -20,6 +21,7 @@ if(isset ($_POST['submit']) ) {
               exit;
     }
 }
+session_destroy();
 include "../admin/Template/login.html"
 ?>
 <meta http-equiv="content-type" content="text/html;charset=utf-8">
