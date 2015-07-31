@@ -4,20 +4,24 @@
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
+
     <!-- Basic Page Needs
   ================================================== -->
 	<meta charset="utf-8">
 	<title>chinaz</title>
 	<meta name="description" content="Free Responsive Html5 Css3 Templates Designed by Kimmy | zerotheme.com">
 	<meta name="author" content="sc.chinaz.com">
+	
     <!-- Mobile Specific Metas
   ================================================== -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
     <!-- CSS
   ================================================== -->
-  	<link rel="stylesheet" href="css/zerogrid.css">
-	<link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+  	<link rel="stylesheet" href="../css/zerogrid.css">
+	<link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+	
 	<!--[if lt IE 8]>
        <div style=' clear: both; text-align:center; position: relative;'>
          <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
@@ -29,24 +33,22 @@
 		<script src="js/html5.js"></script>
 		<script src="js/css3-mediaqueries.js"></script>
 	<![endif]-->
+	
 	<link href='./images/favicon.ico' rel='icon' type='image/x-icon'/>
+    
 </head>
 <body>
 <div class="wrap-body">
 <!--------------Header--------------->
 <header>
 	<div class="wrap-header zerogrid">
-        <div class="login">
-            <a href="../admin/index.php">
-            <?php if(isset($_SESSION['username'])) {
-              echo $_SESSION['username'].'<a class="loadover" href="loadover_a.php">注销</a>';
-                   } else {
+        <div class="login"><a href="../admin/index.php"> <?php if(isset($_SESSION['username'])) {
+              echo $_SESSION['username'].'<a class="loadover" href="../loadover.php">注销</a>';
+            } else {
             ?>
-            </a>
-        </div>
+            </a></div>
         <div class="login"><a href="login.php"><?php echo "登录"; } ?></a> </div>
-        <div class="logins"> <a href="admin/login.php">管理员登录</a></div>
-		<div id="logo"><a href="#"><img src="./images/9-1.jpg"/></a></div>
+		<div id="logo"><a href="http://sc.chinaz.com"><img src="../images/9-1.jpg"/></a></div>
 		<nav>
 			<div class="wrap-nav">
 				<div class="menu">
@@ -61,6 +63,7 @@
 		</nav>
 	</div>
 </header>
+
 <!--------------Content--------------->
 <section id="content">
 	<div class="wrap-content zerogrid">
@@ -70,36 +73,26 @@
 					<div class="col-full">
 						<div class="wrap-col">
 							<article>
-								<div class="heading"><h1 class="title">精彩文章</h1></div>
-                                <?php while ($tops = mysql_fetch_array($top)) {
+                                <div class="st">
+								<div class="heading"><h1 class="title">管理隐藏文章</h1></div>
+                                </div>
+                              <?php while ($rowp =mysql_fetch_array($result)) {
                                 ?>
                                 <div class="contents">
                                     <div class="yk">
-                                        <div class="contents">
-                                            <div class="yk">  <p><a href="click.php?p=<?php echo $tops['id'] ?>"><?php echo $tops['title'] ?></a>&nbsp;&nbsp;&nbsp;*置顶文章*<a class="aa" href="click.php?p=<?php echo $tops['id'] ?>">要看>></a><a class="aa"><?php echo "已阅读".$tops['click']."次" ?></a> </p></div>
-                                        </div>
+                                        <p>
+                                            <?php echo $rowp['title'] ?>
+                                           <a class="aa" href="hide_yes.php?p=<?php echo $rowp['id'] ?>">显示</a>
+                                         </p>
                                     </div>
                                 </div>
                                 <div class="extras">
-                                    <p><?php  $text = substr($tops['content'],0,100);
-                    echo $text; echo "&nbsp;&nbsp;&nbsp;&nbsp;发布人_" .$tops['user'] ."&nbsp;&nbsp;发布时间_" .$tops['lastdate']; ?></p>
+                                    <p><?php  $text = substr($rowp['content'],0,100);
+                    echo $text; echo "&nbsp;&nbsp;&nbsp;&nbsp;发布人_" .$rowp['user'] ."&nbsp;&nbsp;发布时间_" .$rowp['lastdate']; ?></p>
                                 </div>
                                 <hr width=100% size=1 color=#c2c2c2 style="border:3 double green">
                                 <?php } ?>
-                              <?php while ($rowp =mysql_fetch_array($result)) { ?>
-                                <div class="contents">
-                                    <div class="yk">  <p><a href="click.php?p=<?php echo $rowp['id'] ?>"><?php echo $rowp['title'] ?></a><a class="aa" href="click.php?p=<?php echo $rowp['id'] ?>">要看>></a><a class="aa"><?php echo "已阅读".$rowp['click']."次" ?></a> </p></div>
-                                </div>
-                                <div class="extras">
-                                    <p>
-                                        <?php  $text = substr($rowp['content'],0,100);
-                                        echo $text; echo "&nbsp;&nbsp;&nbsp;&nbsp;发布人_" .$rowp['user'] ."&nbsp;&nbsp;发布时间_" .$rowp['lastdate'];
-                                    ?>
-                                   </p>
-                                </div>
-                                <hr width=100% size=1 color=#c2c2c2 style="border:3 double green">
-                                <?php } ?>
-                               <div class="ss"><?php echo "总共有".$page_count."页&nbsp;|&nbsp;"."第".$page_num."页&nbsp;|&nbsp;" .$page_string; ?></div>
+                               <div class="ss"><?php echo "总共有".$page_count."页|"."第".$page_num."页|" .$page_string; ?></div>
 							</article>
 						</div>
 					</div>
@@ -111,9 +104,10 @@
 <!--------------Footer--------------->
 <footer>
 	<div class="copyright">
-		<p>&copy; Copyright &copy; 2014.Company name All rights reserved.<a target="_blank" href="#">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+		<p>&copy; Copyright &copy; 2014.Company name All rights reserved.</a></p>
 	</div>
 </footer>
+
 </div>
 <div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
 </body>

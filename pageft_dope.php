@@ -34,14 +34,14 @@ if( $amount ) {
 // 翻页链接  
 $page_string ="";
 if( $page == 1 ) {
-    $page_string.="首页|上一页|";
+    $page_string.="首页&nbsp;|&nbsp;上一页&nbsp;|&nbsp;";
 } else {
-    $page_string.= "<a href=?page=1>首页</a>|<a href=?page=".($page-1).">上一页</a>|";
+    $page_string.= "<a href=?page=1>首页</a>&nbsp;|&nbsp;<a href=?page=".($page-1).">上一页</a>&nbsp;|&nbsp;";
 }  
 if( ($page == $page_count) || ($page_count == 0) ) {
-    $page_string.=" 下一页|尾页";
+    $page_string.=" 下一页&nbsp;|&nbsp;尾页";
 } else {
-    $page_string.= "<a href=?page=".($page+1).">下一页</a>|<a href=?page=".$page_count.">尾页</a>";
+    $page_string.= "<a href=?page=".($page+1).">下一页</a>&nbsp;|&nbsp;<a href=?page=".$page_count.">尾页</a>";
 }
 $page_num = $page;
 ?>

@@ -16,6 +16,14 @@ if (isset($_POST['submit'])) {
 }
 $sql = "select * from userpost order by click desc limit 2";
 $recommend = mysql_query($sql);
+
+$sql = "select * from userpost where id < $id order by id DESC limit 1";
+$reads = mysql_query($sql);
+$readsh = mysql_fetch_array($reads);
+
+$sql = "select * from userpost where id > $id order by id ASC limit 1";
+$readx = mysql_query($sql);
+$readxia = mysql_fetch_array($readx);
 include("pageft_b.php");
 include "Template/blog.html";
 ?>

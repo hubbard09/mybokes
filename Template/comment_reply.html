@@ -43,7 +43,7 @@
 <header>
 	<div class="wrap-header zerogrid">
         <div class="login"><a href="index.php"> <?php if(isset($_SESSION['username'])) {
-              echo $_SESSION['username'].'<a href="loadover_a.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注销</a>'; } else {
+              echo $_SESSION['username'].'<a class="loadover" href="loadover_a.php">注销</a>'; } else {
         ?>
         </a></div>
         <div class="login"><a href="login.php"><?php echo "登录"; } ?></a> </div>

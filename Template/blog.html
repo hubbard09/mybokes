@@ -43,7 +43,7 @@
 <header>
 	<div class="wrap-header zerogrid">
         <div class="login"><a href="../admin/index.php"> <?php if(isset($_SESSION['username'])) {
-              echo $_SESSION['username'].'<a href="loadover_a.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注销</a>'; } else {
+              echo $_SESSION['username'].'<a class="loadover" href="loadover_a.php">注销</a>'; } else {
             ?>
             </a></div>
         <div class="login"><a href="login.php"><?php echo "登录"; } ?></a> </div>
@@ -82,6 +82,12 @@
                                 <div class="extra">
                                    <?php echo "发布时间_" .$rowone['lastdate']."&nbsp;&nbsp;&nbsp;". "发布人_" .$rowone['user']?>
                                 </div>
+                                <div class="reads"></div>
+                                <div class="read">
+                                    <a class="readsh" href="post.php?p=<?php echo $readsh['id'] ?>"><?php if($readsh['id'] != "") { echo "<<".$readsh['title']; } ?></a>
+                                    <a class="readxia" href="post.php?p=<?php echo $readxia['id'] ?>"><?php if($readxia['id'] != "") { echo $readxia['title'].">>"; } ?></a>
+                                </div>
+                                <div class="readss"></div>
                                 <div class="box">
                                     <div class="heading"><h4 class="title">最新评论</h4></div>
                                     <div class="contentf">

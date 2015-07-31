@@ -21,6 +21,7 @@
   	<link rel="stylesheet" href="../css/zerogrid.css">
 	<link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/responsive.css">
+
 	
 	<!--[if lt IE 8]>
        <div style=' clear: both; text-align:center; position: relative;'>
@@ -30,9 +31,8 @@
       </div>
     <![endif]-->
     <!--[if lt IE 9]>
-		<script src="js/html5.js"></script>
-		<script src="js/css3-mediaqueries.js"></script>
-	<![endif]-->
+
+    <![endif]-->
 	
 	<link href='./images/favicon.ico' rel='icon' type='image/x-icon'/>
     
@@ -76,12 +76,30 @@
 							<article>
                                 <div class="st">
 								<div class="heading"><h1 class="title">精彩文章</h1></div>
-                                    <div class="sts"><a href="add_post.php"> 添加新文章</a></div>
+                                    <div class="sts"><a href="add_post.php"> 添加新文章</a>&nbsp;<a href="hide.php"> 管理隐藏文章</a></div>
                                 </div>
-                              <?php while ($rowp =mysql_fetch_array($result)) {
+                                <form name="del_batch" action="del_batch.php" method="post">
+
+                                <?php while ($rowp =mysql_fetch_array($result)) {
                                 ?>
                                 <div class="contents">
-                                    <div class="yk">  <p><?php echo $rowp['title'] ?> <a class="aa" href="delete.php?p=<?php echo $rowp['id'] ?>">删除</a>&nbsp;&nbsp;&nbsp;<a class="aa" href="post.php?p=<?php echo $rowp['id'] ?>">编辑</a></p></div>
+                                    <div class="yk">
+                                        <p>
+                                            <input name="id[]" type="checkbox" id="id[]" value="<?php echo $rowp['id']?>" />&nbsp;<?php echo $rowp['title'] ?>
+                                           <a class="aa" href="delete.php?p=<?php echo $rowp['id'] ?>">删除</a>
+                                           <a class="aa" href="post.php?p=<?php echo $rowp['id'] ?>">编辑</a>
+                                            <?php if($rowp['hide'] == 'T') { ?>
+                                           <a class="aa" href="hide_no.php?p=<?php echo $rowp['id'] ?>">不显示</a>
+                                            <?php } else { ?>
+                                            <a class="aa" href="hide_yes.php?p=<?php echo $rowp['id'] ?>">显示</a>
+                                             <?php } ?>
+                                            <?php if($rowp['top'] == 'T') { ?>
+                                            <a class="aa" href="top_no.php?p=<?php echo $rowp['id'] ?>">取消置顶</a>
+                                            <?php } else { ?>
+                                            <a class="aa" href="top_yes.php?p=<?php echo $rowp['id'] ?>">置顶</a>
+                                            <?php } ?>
+                                         </p>
+                                    </div>
                                 </div>
                                 <div class="extras">
                                     <p><?php  $text = substr($rowp['content'],0,100);
@@ -89,7 +107,30 @@
                                 </div>
                                 <hr width=100% size=1 color=#c2c2c2 style="border:3 double green">
                                 <?php } ?>
-                               <div class="ss"><?php echo "总共有".$page_count."页|"."第".$page_num."页|" .$page_string; ?></div>
+                                    <script type="text/javascript" language="javascript">
+                                        function selectBox(selectType){
+                                            var checkboxis = document.getElementsByName("id[]");
+                                            if(selectType == "reverse"){
+                                                for (var i=0; i<checkboxis.length; i++){
+                                                    //alert(checkboxis[i].checked);
+                                                    checkboxis[i].checked = !checkboxis[i].checked;
+                                                }
+                                            }
+                                            else if(selectType == "all")
+                                            {
+                                                for (var i=0; i<checkboxis.length; i++){
+                                                    //alert(checkboxis[i].checked);
+                                                    checkboxis[i].checked = true;
+                                                }
+                                            }
+                                        }
+                                    </script>
+                                    <div class="reverse">
+                                        <input class="reverses" type="button" value="全选"  onClick="selectBox('reverse')"/>
+                                        &nbsp;|&nbsp;<input class="reverses" type="submit" name="btnSave"  value="批量删除"/>
+                                    </div>
+                                </form>
+                               <div class="ss"><?php echo "总共有".$page_count."页&nbsp;|&nbsp;"."第".$page_num."页&nbsp;|&nbsp;" .$page_string; ?></div>
 							</article>
 						</div>
 					</div>
@@ -101,7 +142,7 @@
 <!--------------Footer--------------->
 <footer>
 	<div class="copyright">
-		<p>&copy; Copyright &copy; 2014.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+		<p>&copy; Copyright &copy; 2014.Company name All rights reserved.</a></p>
 	</div>
 </footer>
 

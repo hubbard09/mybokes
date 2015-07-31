@@ -1,3 +1,5 @@
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
 <?php
 include 'conn.php';
 session_start();
@@ -34,5 +36,5 @@ if(isset ($_POST['submit']) ) {
 }
 include "Template/login.html"
 ?>
-<meta http-equiv="content-type" content="text/html;charset=utf-8">
+
 </table>
