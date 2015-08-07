@@ -1,5 +1,6 @@
 <?php
 include 'conn.php';
+include "params.php";
 session_start();
 $_SESSION['userurl'] = $_SERVER['REQUEST_URI'];
 if(isset($_SESSION['username']) == "") {
@@ -16,5 +17,5 @@ if (isset($_POST['submit'])) {
     $url = "post.php?p={$onef['messageid']}";
     echo "<script language = 'javascript' type = 'text/javascript'>"; echo "window.location.href = '$url'"; echo "</script>";
 }
-include "Template/comment_reply.html";
+include "Template/" . $template . "/comment_reply.php";
 ?>

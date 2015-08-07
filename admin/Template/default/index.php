@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+    <!-- Basic Page Needs
+  ================================================== -->
+    <meta charset="utf-8">
+    <title>chinaz</title>
+    <meta name="description" content="Free Responsive Html5 Css3 Templates Designed by Kimmy | zerotheme.com">
+    <meta name="author" content="sc.chinaz.com">
+
+    <!-- Mobile Specific Metas
+  ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+  ================================================== -->
+    <link rel="stylesheet" href="../css/zerogrid.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+    <!--[if lt IE 8]>
+    <div style=' clear: both; text-align:center; position: relative;'>
+        <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+            <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+        </a>
+    </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="js/html5.js"></script>
+    <script src="js/css3-mediaqueries.js"></script>
+    <![endif]-->
+
+    <link href='./images/favicon.ico' rel='icon' type='image/x-icon'/>
+
+</head>
+<body>
+<div class="wrap-body">
+<!--------------Header--------------->
+<header>
+	<div class="wrap-header zerogrid">
+        <div class="login"><a href="../admin/index.php"> <?php if(isset($_SESSION['username'])) {
+              echo $_SESSION['username'].'<a class="loadover" href="../loadover.php">注销</a>';
+            echo '<a class="dope" href="dope.php">新消息'.'('.$add.')'.'</a>';
+                    echo '<a class="dope_1" href="template.php">设置模板</a>';
+            } else {
+            ?>
+            </a></div>
+        <div class="login"><a href="login.php"><?php echo "登录"; } ?></a> </div>
+		<div id="logo"><a href="#"><img src="../images/9-1.jpg"/></a></div>
+		<nav>
+			<div class="wrap-nav">
+				<div class="menu">
+					<ul>
+						<li><a href="../admin/index.php">正房</a></li>
+                        <li><a href="../admin/article.php">精彩文章</a></li>
+						<li><a href="../admin/Message-Board.php">留下爪子</a></li>
+						<li><a href="../admin/about-me.php">关于我</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
+</header>
+
+<!--------------Content--------------->
+<section id="content">
+	<div class="wrap-content zerogrid">
+		<div class="row block">
+			<div id="main-content" class="col-2-3">
+				<div class="row">
+					<div class="col-full">
+						<div class="wrap-col">
+							<article>
+								<div class="heading"><h2 class="title"><a href="post.php?p=<?php echo $rowoo['id'] ?>"><?php echo $rowoo['title'] ?></a></h2></div>
+                                <img src="<?php echo '../'.$rowoo['images'] ?>"/>
+								<div class="content">
+									<p><?php
+									$text = substr($rowoo['content'],0,500);
+                                echo $text;
+									?></p>
+								</div>
+								<div class="extra">
+									<div class="info"><?php echo $rowoo['lastdate'] ?></div>
+                                    <div class="more"> <a class="button" href="post.php?p=<?php echo $rowoo['id'] ?>">管理 >></a></div>
+									<div class="clear"></div>
+								</div>
+							</article>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+                    <?php while ($row = mysql_fetch_array($query)) { ?>
+                    <div class="col-1-2">
+                    <div class="wrap-col">
+                        <article>
+                            <div class="heading"><h2 class="title2"><a href="post.php?p=<?php echo $row['id'] ?>"><?php echo $row['title'] ?></a></h2></div>
+                            <img src="<?php echo '../'.$row['images'] ?>"/>
+                            <div class="extra">
+                                <div class="info"><?php echo $row['lastdate'] ?></div>
+                                <div class="more"><a class="button" href="post.php?p=<?php echo $row['id'] ?>">管理 >></a></div>
+                                <div class="clear"></div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                    <?php } ?>
+                </div>
+			</div>
+			<div id="sidebar" class="col-1-3">
+				<div class="wrap-col">
+					<div class="box">
+						<div class="heading"><h4 class="title">联系我们</h4></div>
+						<div class="content">
+							<div class="connect">
+								<a href="#"><img src="../images/socials/facebook-icon.png" title="facebook"/></a><a href="#"><img src="../images/socials/google-plus-icon.png" title="google plus"/></a><a href="#"><img src="../images/socials/twitter-icon.png" title="twitter" /></a><a href="#"><img src="../images/socials/pinterest-icon.png" title="pin"/></a><a href="#"><img src="../images/socials/rss-icon.png" title="rss"/></a>
+							</div>
+						</div>
+					</div>
+					<div class="box">
+						<div class="heading"><h4 class="title">火热文章</h4></div>
+						<div class="content">
+                            <?php while ($recom = mysql_fetch_array($recommend)) { ?>
+							<div class="post">
+								<img src="<?php echo '../'.$recom['images'] ?>"/>
+								<h5 class="title"><a href="post.php?p=<?php echo $recom['id'] ?>"><?php echo $recom['title'] ?></a></h5>
+							</div>
+                            <?php } ?>
+						</div>
+					</div>
+
+					<div class="box">
+						<div class="heading"><h4 class="title">Random Post</h4></div>
+						<div class="content">
+							<div class="post">
+								<img src="../images/img1[thumb].jpg"/>
+								<h5 class="title"><a href="#">Lorem ipsum dolor sit amet</a></h5>
+								<p>November 11 ,2012</p>
+							</div>
+							<div class="post">
+								<img src="../images/img3[thumb].jpg"/>
+								<h5 class="title"><a href="#">Lorem ipsum dolor sit amet</a></h5>
+								<p>November 11 ,2012</p>
+							</div>
+							<div class="post last">
+								<img src="../images/img5[thumb].jpg"/>
+								<h5 class="title"><a href="#">Lorem ipsum dolor sit amet</a></h5>
+								<p>November 11 ,2012</p>
+							</div>
+						</div>
+					</div>
+                    <div class="box">
+                        <div class="heading"><h4 class="title">留言板</h4></div>
+                        <?php while ($message = mysql_fetch_array($messages)) { ?>
+                        <div class="content">
+                            <ul>
+                                <li><?php echo $message['name'] .":&nbsp;&nbsp;" .$message['content'] ?></li>
+                                <li><?php echo $message['lastdate'] ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Message-Board.php">我要发言>></a></li>
+                            </ul>
+                        </div>
+                        <?php } ?>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--------------Footer--------------->
+    <?php
+    include "footer.php";
+?>
+
+</div>
+</body>
+</html>

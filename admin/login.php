@@ -1,5 +1,6 @@
 <?php
 include 'conn.php';
+include "params.php";
 session_start();
 
 if(isset ($_POST['submit']) ) {
@@ -22,7 +23,7 @@ if(isset ($_POST['submit']) ) {
     }
 }
 session_destroy();
-include "../admin/Template/login.html"
+include "../admin/Template/" . $template . "/login.php"
 ?>
 <meta http-equiv="content-type" content="text/html;charset=utf-8">
 

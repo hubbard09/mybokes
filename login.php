@@ -2,6 +2,7 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8">
 <?php
 include 'conn.php';
+include "params.php";
 session_start();
 if(isset ($_POST['submit']) ) {
     if($_POST['submit'] == '登录') {
@@ -34,7 +35,7 @@ if(isset ($_POST['submit']) ) {
             header('Location: enroll.php');
         }
 }
-include "Template/login.html"
+include "Template/" . $template . "/login.php"
 ?>
 
-</table>
+

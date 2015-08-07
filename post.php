@@ -1,5 +1,6 @@
 <?php
 include 'conn.php';
+include 'params.php';
 session_start();
 $_SESSION['userurl'] = $_SERVER['REQUEST_URI'];
 $id = $_GET['p'];
@@ -25,5 +26,5 @@ $sql = "select * from userpost where id > $id order by id ASC limit 1";
 $readx = mysql_query($sql);
 $readxia = mysql_fetch_array($readx);
 include("pageft_b.php");
-include "Template/blog.html";
+include "Template/" . $template . "/blog.php";
 ?>

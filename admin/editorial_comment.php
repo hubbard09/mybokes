@@ -1,5 +1,6 @@
 <?php
 include 'conn.php';
+include "params.php";
 session_start();
 $id = $_GET['p'];
 $sql = "SELECT messageid from message where id = $id";
@@ -14,5 +15,5 @@ if (isset($_POST['submit'])) {
 $sql = "select * from message where id = $id ";
 $query = mysql_query($sql);
 $row = mysql_fetch_array($query);
-include "Template/editorial_comment.html";
+include "Template/" . $template . "/editorial.php";
 ?>

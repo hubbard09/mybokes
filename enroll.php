@@ -1,5 +1,6 @@
 <?php
 include 'conn.php';
+include "params.php";
 if(isset($_POST['submit'])) {
     $sql = "select * from user ";
     $query = mysql_query($sql);
@@ -16,6 +17,6 @@ if(isset($_POST['submit'])) {
         } echo "<script language = javascript>alert('用户名和密码不能为空');history.back();</script>";
           exit;
 }
-include "Template/enroll.html"
+include "Template/" . $template . "/enroll.php"
 ?>
 <meta http-equiv="content-type" content="text/html;charset=utf-8">

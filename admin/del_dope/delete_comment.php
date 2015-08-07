@@ -10,7 +10,16 @@ mysql_query($sql);
 
 $sql = "DELETE FROM message WHERE id = $id ";
 mysql_query($sql);
-
-$url = "../dope.php";
-echo "<script language = 'javascript' type = 'text/javascript'>"; echo "window.location.href = '$url'"; echo "</script>";
+if(isset($_SESSION['userurl'])) {
+    $url = $_SESSION['userurl'];
+    echo "<script language = 'javascript' type = 'text/javascript'>";
+    echo "window.location.href = '$url'";
+    echo "</script>";
+    exit;
+} else {
+    $url = "../article.php";
+    echo "<script language = 'javascript' type = 'text/javascript'>";
+    echo "window.location.href = '$url'";
+    echo "</script>";
+}
 ?>

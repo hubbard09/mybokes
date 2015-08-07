@@ -1,5 +1,6 @@
 <?php
 include 'conn.php';
+include "params.php";
 session_start();
 if(isset($_SESSION['username']) == "") {
     echo '您的用户未登录，麻烦您<a href="login.php">重新登录</a> ';
@@ -9,7 +10,7 @@ $sql = "select * from userpost order by id desc limit 1 ";
 $query = mysql_query($sql);
 $rowoo = mysql_fetch_array($query);
 
-$sql = "select * from userpost order by id desc limit 2,4 ";
+$sql = "select * from userpost order by id desc limit 2,6 ";
 $query = mysql_query($sql);
 
 $sql = "select * from userpost order by recommend desc limit 2 ";
@@ -35,6 +36,6 @@ $sql = "select * from message_board_reply where audit = 'F'";
 $ff = mysql_query($sql);
 $fou = mysql_num_rows($ff);
 $add = $onef + $twof + $threef + $fou;
-include "Template/index.html"
+include "Template/" . $template . "/index.php"
 ?>
 

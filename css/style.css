@@ -188,6 +188,10 @@ nav .wrap-nav{float: right;}
 {
     margin-left: 120px;
 }
+.dope_1
+{
+    margin-left: 200px;
+}
 .ad{
     position:absolute;
     right:0;
@@ -202,6 +206,25 @@ nav .wrap-nav{float: right;}
     height: 30px;
     width: auto;
 }
+.index_about .photo
+{
+    margin: 30px auto;
+    background-image: url("../images/template_1.jpg");
+    height: 300px;
+    width: 400px;
+}
+.index_about .photo_1
+{
+    margin: 30px auto;
+    background-image: url("../images/template.jpg");
+    height: 300px;
+    width: 400px;
+}
+.index_about .in
+{
+    margin: 47%;
+}
+
 /*默认样式，主要是position:fixed实现屏幕绝对定位*/
 .gotoTop{display:none;position:fixed;top:75%;left:50%;cursor:pointer;margin-top:-50px;margin-left:520px;padding:9px 4px;width:20px;text-align:center;border:1px solid #e0e0e0;background:#fff;}
 /*用CSS表达式(expression)来实现ie6下position:fixed效果*/

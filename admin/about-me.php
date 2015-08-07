@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "conn.php";
+include "params.php";
 if(isset($_SESSION['username']) == "") {
     echo '您的用户未登录，麻烦您<a href="login.php">重新登录</a> ';
     exit;
@@ -19,5 +20,7 @@ if(isset($_POST['submit'])) {
 $sql = "select * from admin ";
 $query = mysql_query($sql);
 $row = mysql_fetch_array($query);
-include "Template/about.html"
+
+
+include "Template/" . $template . "/about.php"
 ?>

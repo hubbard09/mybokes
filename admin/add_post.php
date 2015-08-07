@@ -1,5 +1,6 @@
 <?php
 include 'conn.php';
+include "params.php";
 session_start();
 if (isset($_POST['submit'])) {
     include "../text.php";
@@ -8,5 +9,5 @@ if (isset($_POST['submit'])) {
     $url = "article.php";
     echo "<script language = 'javascript' type = 'text/javascript'>"; echo "window.location.href = '$url'"; echo "</script>";
 }
-include "Template/add_post.html";
+include "Template/" . $template . "/add_post.php";
 ?>

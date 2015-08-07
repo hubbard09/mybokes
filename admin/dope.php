@@ -1,6 +1,8 @@
 <?php
 session_start();
 include 'conn.php';
+include "params.php";
+$_SESSION['userurl'] = $_SERVER['REQUEST_URI'];
 $sql = "SELECT * FROM `message` where audit = 'F' ORDER BY `message`.`lastdate` DESC";
 $query = mysql_query($sql);
 if(isset ($_POST['submit']) ) {
@@ -22,5 +24,5 @@ $sql = "select * from message_board_reply where audit = 'F'";
 $ff = mysql_query($sql);
 
 include("../pageft_dope.php");
-include "Template/dope.html"
+include "Template/" . $template . "/dope.php"
 ?>

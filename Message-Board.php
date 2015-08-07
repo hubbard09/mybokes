@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'conn.php';
+include "params.php";
 $sql = "SELECT * FROM `message_board` ORDER BY Praise desc limit 3";
 $query = mysql_query($sql);
 if(isset ($_POST['submit']) ) {
@@ -12,5 +13,5 @@ if(isset ($_POST['submit']) ) {
     mysql_query($sql);
 }
 include("pageft_message.php");
-include "Template/message.html"
+include "Template/" . $template . "/message.php"
 ?>

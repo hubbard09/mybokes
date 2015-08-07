@@ -1,6 +1,8 @@
 <?php
 session_start();
 include 'conn.php';
+include "params.php";
+$_SESSION['userurl'] = $_SERVER['REQUEST_URI'];
 if(isset($_SESSION['username']) == "") {
     echo '您的用户未登录，麻烦您<a href="login.php">重新登录</a> ';
     exit;
@@ -19,5 +21,7 @@ $audit = mysql_query($sql);
 $sql = "select * from message_board where audit = 'F'";
 $two = mysql_query($sql);
 $twof = mysql_num_rows($two);
-include "Template/message.html"
+
+
+include "Template/" . $template . "/message.php"
 ?>

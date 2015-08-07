@@ -1,5 +1,6 @@
 <?php
 include 'conn.php';
+include "params.php";
 session_start();
 $_SESSION['userurl'] = $_SERVER['REQUEST_URI'];
 if(isset($_SESSION['username']) == "") {
@@ -16,5 +17,5 @@ if (isset($_POST['submit'])) {
 $sql = "select * from message_board_reply where id = $id";
 $query = mysql_query($sql);
 $rowo = mysql_fetch_array($query);
-include "Template/message_reply.html";
+include "Template/" . $template . "/message_reply.php";
 ?>

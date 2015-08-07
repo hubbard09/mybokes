@@ -1,6 +1,8 @@
 <?php
 include 'conn.php';
+include "params.php";
 session_start();
+$_SESSION['userurl'] = $_SERVER['REQUEST_URI'];
 if(isset($_SESSION['username']) == "") {
     echo '您的用户未登录，麻烦您<a href="login.php">重新登录</a> ';
     exit;
@@ -19,13 +21,13 @@ if (isset($_POST['submit'])) {
 }
 $sql = "select * from userpost where id = $id ";
 $query = mysql_query($sql);
-$row = mysql_fetch_array($query);
+$edit = mysql_fetch_array($query);
 
 $sql = "select * from message where messageid = $id order by id desc limit 10";
 $query = mysql_query($sql);
 
 $sql = "select * from userpost order by click desc limit 2";
 $recommend = mysql_query($sql);
-
-include "Template/blog.html";
+include "pageft_post.php";
+include "Template/" . $template . "/blog.php";
 ?>
