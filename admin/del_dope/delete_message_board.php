@@ -1,5 +1,6 @@
 <?php
 include "../conn.php";
+session_start();
 $id = $_GET['p'];
 echo "<script language = javascript>alert('是否真的要删除');history.back();</script>";
 $sql = "DELETE FROM message_board WHERE id = $id ";

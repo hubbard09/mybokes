@@ -11,7 +11,7 @@ else {
 // 每页数量  
 $page_size =10;
 // 获取总数据量  
-$sql = "select * from message where audit = 'T'";
+$sql = "select * from message ";
 $result = mysql_query($sql);
 $row = mysql_num_rows($result);
     $i=$row;
@@ -30,7 +30,7 @@ else {
 }
 // 获取数据，以二维数组格式返回结果  
 if( $amount ) {
-    $sql = "select * from message where audit = 'T' order by id desc limit ". ($page-1)*$page_size .",$page_size";
+    $sql = "select * from message where messageid = $id order by id desc limit ". ($page-1)*$page_size .",$page_size";
     $results =mysql_query($sql);
 }
 // 翻页链接  
@@ -40,13 +40,13 @@ if( $page == 1 ) {
     $page_string.="首页&nbsp;|&nbsp;上一页&nbsp;|&nbsp;";
 }  
 else {
-    $page_string.= "<a href=?page=1>首页</a>&nbsp;|&nbsp;<a href=?page=".($page-1).">上一页</a>&nbsp;|&nbsp;";
+    $page_string.= "<a href=?p=$id&page=1>首页</a>&nbsp;|&nbsp;<a href=?p=$id&page=".($page-1).">上一页</a>&nbsp;|&nbsp;";
 }  
 if( ($page == $page_count) || ($page_count == 0) ) {
     $page_string.=" 下一页&nbsp;|&nbsp;尾页";
 }  
 else {
-    $page_string.= "<a href=?page=".($page+1).">下一页</a>&nbsp;|&nbsp;<a href=?page=".$page_count.">尾页</a>";
+    $page_string.= "<a href=?p=$id&page=".($page+1).">下一页</a>&nbsp;|&nbsp;<a href=?p=$id&page=".$page_count.">尾页</a>";
 }
 $page_num = $page;
 ?>

@@ -30,8 +30,8 @@ include "header.php";
           <div class="heading"><h2 class="title">最新评论</h2></div>
           <div class="xian"></div>
           <div class="contentf">
-              <?php while($rowtwo = mysql_fetch_array($result)) {
-                  if($rowtwo['audit'] == 'T') { ?>
+              <?php while($rowtwo = mysql_fetch_array($results)) {
+                   ?>
                       <p><?php echo $rowtwo['name'] ?></p>
                       <p><?php echo $rowtwo['content'] ?></p>
                       <p><?php echo $rowtwo['lastdate'] ?>
@@ -51,23 +51,22 @@ include "header.php";
                       $sql = "select * from admin_reply where messageid = {$rowtwo['id']}";
                       $queryone = mysql_query($sql);
                       while($yh = mysql_fetch_array($queryone)) {
-                          if($yh['audit'] == 'T') {
-                              ?>
-                              <p><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;'.$yh['content'] ?></p>
-                              <p><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;'.$yh['lastdate'] ?>
-                                  &nbsp;&nbsp;<?php if($yh['audit'] == 'F') { ?>
-                                      <a href="comment_audit.php?p=<?php echo $yh['id'] ?>">通过</a>
-                                  <?php  }  else {  ?>
-                                      <a href="comment_audit_not.php?p=<?php echo $yh['id'] ?>">不通过</a>
-                                  <?php  } ?>
-                                  &nbsp;&nbsp;<a href="comment_reply_1.php?p=<?php echo $yh['id'] ?>">回复</a>
-                                  &nbsp;&nbsp;<a href="editorial_comment_1.php?p=<?php echo $yh['id'] ?>">编辑</a>
-                                  &nbsp;&nbsp;<a href="del_dope/delete_comment_reply.php?p=<?php echo $yh['id'] ?>">删除</a></p>
-                              <div class="xian"></div>
-                          <?php
-                          }
+                          ?>
+                          <p><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;' . $yh['content'] ?></p>
+                          <p><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;' . $yh['lastdate'] ?>
+                              &nbsp;&nbsp;<?php if ($yh['audit'] == 'F') { ?>
+                                  <a href="comment_audit_reply.php?p=<?php echo $yh['id'] ?>">通过</a>
+                              <?php } else { ?>
+                                  <a href="comment_audit_not_reply.php?p=<?php echo $yh['id'] ?>">不通过</a>
+                              <?php } ?>
+                              &nbsp;&nbsp;<a href="comment_reply_1.php?p=<?php echo $yh['id'] ?>">回复</a>
+                              &nbsp;&nbsp;<a href="editorial_comment_1.php?p=<?php echo $yh['id'] ?>">编辑</a>
+                              &nbsp;&nbsp;<a href="del_dope/delete_comment_reply.php?p=<?php echo $yh['id'] ?>">删除</a>
+                          </p>
+                          <div class="xian"></div>
+                      <?php
+
                       }
-                  }
               }
               ?>
           </div>

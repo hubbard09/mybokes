@@ -22,6 +22,5 @@ $sql = "select * from message_board where audit = 'F'";
 $two = mysql_query($sql);
 $twof = mysql_num_rows($two);
 
-
 include "Template/" . $template . "/message.php"
 ?>

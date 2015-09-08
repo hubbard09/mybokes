@@ -16,9 +16,18 @@ include "header.php";
 <article class="blogs">
 <h1 class="t_nav"><span>好咖啡要和朋友一起品尝，好“模板”也要和同样喜欢它的人一起分享。 </span><a href="index.php" class="n1">网站首页</a><a href="article.php" class="n2">精彩文章</a></h1>
 <div class="newblog left">
+    <?php while($tops = mysql_fetch_array($top)) { ?>
+        <h2><?php echo $tops['title'] ?></h2>
+        <p class="dateview"><span>发布时间：<?php echo $tops['lastdate'] ?></span><span>作者：<?php echo $tops['user'] ?></span><span>分类：[<a href="#">情感</a>]</span><span>分类：[<a href="#">置顶</a>]</span></p>
+        <figure><img src="<?php echo $tops['images'] ?>"></figure>
+        <ul class="nlist">
+            <p><?php  $text = substr($tops['content'],0,160); echo $text ?></p>
+            <a  href="post.php?p=<?php echo $tops['id'] ?>" target="_blank" class="readmore">详细信息>></a>
+        </ul>
+    <?php  } ?>
     <?php while($row = mysql_fetch_array($result)) { ?>
    <h2><?php echo $row['title'] ?></h2>
-   <p class="dateview"><span>发布时间：<?php echo $row['lastdate'] ?></span><span>作者：<?php echo $row['user'] ?></span><span>分类：[<a href="/news/life/">情感</a>]</span></p>
+   <p class="dateview"><span>发布时间：<?php echo $row['lastdate'] ?></span><span>作者：<?php echo $row['user'] ?></span><span>分类：[<a href="#">情感</a>]</span></p>
     <figure><img src="<?php echo $row['images'] ?>"></figure>
     <ul class="nlist">
       <p><?php  $text = substr($row['content'],0,160); echo $text ?></p>

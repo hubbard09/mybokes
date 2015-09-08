@@ -30,7 +30,7 @@ include "header.php";
 </div>
 <aside class="right">  
     <div class="about_c">
-    <p><label><input class="inputs" name="net_name"<?php echo $row['net_name'] ?> /></p>
+    <p><label><input class="inputs" name="net_name" value="<?php echo $row['net_name'] ?>" /></label></p>
     <p><label><input class="inputs" name="admin_name" value="<?php echo $row['name'] ?>"/></label></p>
     <p><label><input class="inputs" name="lastdate" value="<?php echo $row['lastdate'] ?>"/></label></p>
     <p><label><input class="inputs" name="origin" value="<?php echo $row['origin'] ?>"/></label></p>

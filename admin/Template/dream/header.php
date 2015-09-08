@@ -1,5 +1,5 @@
 <header>
-    <div class="login"><a href="../../admin/index.php"> <?php if(isset($_SESSION['username'])) {
+    <div class="login"><a href="#"> <?php if(isset($_SESSION['username'])) {
                 echo $_SESSION['username'].'<a class="over" href="../loadover.php">注销</a>';
             } else {
             ?>
